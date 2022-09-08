@@ -36,15 +36,21 @@ Unlike government price setting, which threatens Americans’ access to crucial,
 
 Let’s work together to make sure medicines are more affordable and accessible for senior immigrants.
     </p>
-    <form id="signin">
-        Email:
-        <input type="text">
 
-        Password:
-        <input type="textarea">
-
-        <input type="submit">
-
-    </form>
+        
+    <div class="login">
+        <h1>Sign Up Here:</h1>
+        <form action="/auth" method="post">
+            <label for="username">
+                 </label>
+            <input type="text" name="username" placeholder="Username" id="username" required>
+            <label for="password">
+                 </label><br></br>
+            <input type="password" name="password" placeholder="Password" id="password" required><br></br>
+            
+            <input type="submit" value="SignIn">
+        </form>
+    </div>
+    
 </body>
 </html>
