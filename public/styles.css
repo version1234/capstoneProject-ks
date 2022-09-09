@@ -1,0 +1,41 @@
+
+html{
+    background:lightblue
+}
+body {
+		
+	background: rgb(148, 201, 239);
+	padding: 1rem;
+	max-width:fit-content;
+	margin: 1rem;
+    
+	font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+	}
+    .crumb {
+        margin-left: 22em;
+        display:inline-flex;
+       
+    }
+    img {
+     width: 1200px;
+        margin-left: 22em;
+        max-height: 300px;
+    }
+    header{
+        font-size:xx-large;
+        font-family:cursive;
+        margin-left: 25em;
+    }
+h1{
+    font-size:larger;
+    font-family:cursive;
+    text-decoration:underline;
+}
+
+label{
+    font-family:cursive;
+}
+button{
+    font-family:cursive;
+    margin-left: em;
+}
