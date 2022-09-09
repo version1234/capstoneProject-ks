@@ -2,8 +2,10 @@
 require('dotenv').config();
 const Sequelize = require ('sequelize');
 const{CONNECTION_STRING} = process.env
+console.log("server------ index.js");
+console.log(CONNECTION_STRING);
 
-const sequelize = new Sequelize('postgres://cqygodlhghevkh:6a6b7f5a0cf926b3410a8f49f28ae92cf300af4515325098908c4a6692bf5af9@ec2-44-197-128-108.compute-1.amazonaws.com:5432/d5iufgbm3g7283',{
+const sequelize = new Sequelize(CONNECTION_STRING,{
     dialect: 'postgres',
     dialectOptions: {
         ssl: {
@@ -55,7 +57,8 @@ module.exports = {
 
     getLogin: (req, res) => {
         const user_name = req.params.username
-        sequelize.query (`select login.username, login.password FROM login WHERE username = ${user_name}`)
+        console.log("user_name :: ",user_name);
+        sequelize.query (`select login.username, login.password FROM login WHERE username = '${user_name}'`)
         .then((dbRes) => res.status(200) .send(dbRes[0]))
     
         .catch((err) => { console.log('User Not Found', err)
