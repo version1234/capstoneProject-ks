@@ -5,7 +5,7 @@ const cors = require('cors');
 const axios = require("axios");
  const path = require('path')
  const app = express();
- const SERVER_PORT = 5051
+ const SERVER_PORT = 5050
 const {seed, getLogins, getLogin} = require('./controller.js')
  app.use(express.json())
  app.use(cors());
