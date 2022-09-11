@@ -23,6 +23,7 @@ module.exports = {
             drop table if exists states;
             drop table if exists medicalServices;
             drop table if exists availableMedicalServices;
+            drop table if exists appointments;
             
 
             create table login (    
@@ -30,6 +31,7 @@ module.exports = {
                 username varchar(255),
                 password varchar(255)
             );
+
             create table states(  
             stateId serial primary key,
             stateName varchar(255)
@@ -49,10 +51,12 @@ module.exports = {
                 contact varchar
              );
  
-
-            
-
-               
+             create table appointment(
+                id serial primary key,
+                contactName varchar(255),
+                serviceId int,
+                appointmentDate date
+             );
 
                 insert into states(stateName) values
                 ('Minnesota'),
@@ -143,7 +147,7 @@ module.exports = {
     },
     getavailableMedicalServicesById: (req, res)=> {
       
-        sequelize.query(`SELECT ams.id, location, contact, s.stateName, s.stateId , ms.serviceId, ms.serviceName from availableMedicalServices  ams   
+        sequelize.query(`SELECT ams.id, ams.location, ams.contact, s.stateName, s.stateId , ms.serviceId, ms.serviceName from availableMedicalServices  ams   
             INNER JOIN  states s 
             ON  s.stateId = ams.stateID 
             INNER JOIN  medicalServices ms
@@ -155,7 +159,22 @@ module.exports = {
 
         .catch((err) => { console.log('errorwhile medicaldservicesBy id', err)})
         
+    },
+    bookAppointment: (req,res) => {
+        var contactName  = req.body.name; 
+        var appointmentDate  = req.body.date;
+        var serviceid  = req.body.serviceid;
+
+
+        console.log("trying to insert",contactName,appointmentDate,serviceid);
+        const insert_str = `insert into appointment (contactName, serviceId, appointmentDate) values ('${contactName}',${appointmentDate},${serviceid})`;
+        sequelize.query(insert_str)
+        .then((dbRes) => res.status(200).send(dbRes[0]))
+        .catch((err) => { console.log('error inserting appointment', err)})
+
+
     }
+
     
     
 }
