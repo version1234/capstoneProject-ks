@@ -65,8 +65,12 @@ module.exports = {
                 ('Orthopedics');
 
                 insert into availableMedicalServices (stateId, serviceId ,location, contact)
-                values (0, 1, 'Plymouth', '216-345-0000'),
+                values (1, 1, 'Plymouth', '216-345-0000'),
                 (1, 2, 'EdenPrairie', '216-545-0909'),
+                (1, 3, 'Woodberry', '216-545-0910'),
+                (1, 3, 'minneapolis', '216-555-0910'),
+                (1, 2, 'EdenPrairie2', '666-545-0909'),
+                (2, 1, 'Maplegrove', '217-676-8888'),
                 (2, 2, 'Maplegroov', '217-676-0808');
 
 
@@ -121,18 +125,36 @@ module.exports = {
     },
 
     getavailableMedicalServicesByState: (req, res)=> {
-
         const stateID = req.params.id
         console.log(stateID)
-        sequelize.query(`SELECT location, contact, states.stateName, states.stateId, medicalServices.serviceName, medicalServices.serviceId from availableMedicalServices
-            INNER JOIN states
-             ON states.stateId = availableMedicalServices.stateID
-             INNER JOIN  
-             ON medicalServices.serviceID = availableMedicalServices.serviceID
-             where availableMedicalServices.stateid = ${stateID}
-             
+        sequelize.query(`SELECT ams.id, location, contact, s.stateName, s.stateId , ms.serviceId, ms.serviceName from availableMedicalServices  ams   
+            INNER JOIN  states s 
+            ON  s.stateId = ams.stateID 
+            INNER JOIN  medicalServices ms
+            ON ms.serviceId = ams.serviceId
+            where s.stateid = ${stateID}  
             `)
             .then((dbRes) => res.status(200) .send(dbRes[0]))
+
+
+        .catch((err) => { console.log('errorwhile medicaldservicesBy state', err)})
+
+        
+    },
+    getavailableMedicalServicesById: (req, res)=> {
+      
+        sequelize.query(`SELECT ams.id, location, contact, s.stateName, s.stateId , ms.serviceId, ms.serviceName from availableMedicalServices  ams   
+            INNER JOIN  states s 
+            ON  s.stateId = ams.stateID 
+            INNER JOIN  medicalServices ms
+            ON ms.serviceId = ams.serviceId
+            where ams.id = ${req.params.id}  
+            `)
+            .then((dbRes) => res.status(200) .send(dbRes[0]))
+
+
+        .catch((err) => { console.log('errorwhile medicaldservicesBy id', err)})
+        
     }
     
     

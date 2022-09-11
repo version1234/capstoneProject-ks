@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appointment </title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Appointment Page </h1>
+     
+    </header>
+
+    <main>
+        <aside></aside>
+   
+
+            <form>
+                <table>
+                    <tr>
+                        <td>
+                            <label for="location">Appointment Location </label>
+                           
+                        </td>
+                        <td>
+                            <div id="location"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                     
+                        <td>
+                            <label for="name-input">Name:</label>
+                        </td>
+                        <td>
+                            <input type='text' id="name-input"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="appointment-date">Date:</label>
+                        </td>
+                        <td>
+                            <input type="date" id="appointment-date" >
+                        </td>
+                    </tr>
+                 
+                </table>
+              
+
+                <br> <br> <br> <br> <br> <br>
+                <div id="availableDiv"></div>
+                <button>Make an Appointment</button>
+                
+            </form>
+        </aside>
+
+
+    </main>
+
+    <script src="../node_modules/axios/dist/axios.min.js"></script>
+    <script src="appointment.js"></script>
+</body>
+</html>
