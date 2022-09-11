@@ -4,10 +4,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Homepage</title>
+    <title>yourReqPagepage</title>
     <link href="YReqPagestyle.css" rel="stylesheet">
 </head>
 <body>
+    <form id="reqform">
+
+    
     <content>
         <header>
             Your Request For Local Available Services
@@ -24,7 +27,9 @@
 	    </ol>
 	</nav>
     <h1>
-        Welcome<br></br>
+        Welcome User<br></br>
+        <div id="loginName"></div>   
+        
         There Is A Place For You With Us...
     </h1>
 <p>Objectives:<br></br>
@@ -49,25 +54,10 @@
     <button id="addANewRequest" class="button">Click to Add A New Request
     </button><br><br>
     Your Request ID<input type="number"><br></br>
-        Your name:
-        <input type="text"><br></br>
-        Your Age:
-        <input type="number"><br></br>
-        Your Gender:
-        <input type="text"><br></br>
-        Phone:
-        <input type="tel"><br></br>
-        Email:
-        <input type="email"><br></br>
-        Visiting From:
-        <input type="text"><br></br>
-        Choose a Location:
-        <input type="dropbox"><br></br>
-        Visa Type:
-        <input type="text"><br></br>
-        Your Medical Info:
-        <input type="url"><br></br>
-        Your Service Request For: <br>1.Local Senior Medical Health Support Institutions:<input type="checkbox"><br>2.Local Senior Transport Organisations:
+        
+        <!-- Your Medical Info: -->
+        <!-- <input type="url"><br></br> -->
+        Your Service Request For Medical Support: <br>1.General Medical Services:<input type="checkbox"><br>2.Local Senior Transport Organisations:
         <input type="checkbox"><br>3.Local Senior Entertainment Areas<input type="checkbox"><br></br>
 
         Message:
@@ -85,7 +75,8 @@
         <input type="submit">
 
     </form>
-
-
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="yourReqPage.js"></script>
+</form>
 </body>
 </html>

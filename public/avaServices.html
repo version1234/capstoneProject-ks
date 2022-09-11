@@ -5,24 +5,25 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Travel Journal</title>
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="avaServices.css">
 </head>
 <body>
     <header>
-        <h1>Available Services</h1>
+        <h1>Available Medical Services</h1>
     </header>
 
     <main>
-        <!--aside>
-            <h2>Add an Entry</h2>
+        <aside>
+            <h2>Choose a state</h2>
+        
 
-         <form>
-                <label for="name-input">City Name:</label>
-                <input type='text' id="name-input"/>
+            <form>
+                <!-- <label for="name-input">City Name:</label>
+                <input type='text' id="name-input"/> -->
 
-                <label for="country-select">Country:</label>
-                <select id="country-select"></select>
-
+                <label for="state-select">State:</label>
+                <select id="state-select"></select>
+<!--
                 <h4>Rating</h4>
                 <div class="radio">
                     <label for="rating-one">1:</label>
@@ -47,16 +48,17 @@
                 <div class="radio">
                     <label for="rating-five">5:</label>
                     <input type="radio" name="rating" value="5" id="rating-five"/>
-                </div>
+                   </div>
                 
                 <button>Add</button>
+                -->
             </form>
-        </aside> -->
+        </aside>
 
-        <section id="state-list"></section>
+        <section id="states-list"></section>
     </main>
 
     <script src="../node_modules/axios/dist/axios.min.js"></script>
-    <script src="index.js"></script>
+    <script src="avaServices.js"></script>
 </body>
 </html>

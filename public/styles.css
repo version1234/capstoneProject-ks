@@ -38,4 +38,6 @@ label{
 button{
     font-family:cursive;
     margin-left: em;
+    padding:14px 10px;
+    transition:0.25px;
 }
