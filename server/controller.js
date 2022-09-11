@@ -20,6 +20,9 @@ module.exports = {
     seed: (req, res) => {
         sequelize.query(`
             drop table if exists login;
+            drop table if exists states;
+            drop table if exists medicalServices;
+            drop table if exists availableMedicalServices;
             
 
             create table login (    
@@ -27,8 +30,49 @@ module.exports = {
                 username varchar(255),
                 password varchar(255)
             );
+            create table states(  
+            stateId serial primary key,
+            stateName varchar(255)
+            );
+            
+
+            create table medicalServices(
+            serviceId serial primary key,
+            serviceName varchar(255)
+            );
+
+            create table availableMedicalServices(
+                id serial primary key,
+                stateId int,
+                serviceId int,
+                location varchar,
+                contact varchar
+             );
+ 
 
             
+
+               
+
+                insert into states(stateName) values
+                ('Minnesota'),
+                ('Wisconsin'),
+                ('Iowa');
+
+                insert into medicalServices(serviceName) values
+                ('Internal Medicine'),
+                ('Cardiology'),
+                ('Orthopedics');
+
+                insert into availableMedicalServices (stateId, serviceId ,location, contact)
+                values (0, 1, 'Plymouth', '216-345-0000'),
+                (1, 2, 'EdenPrairie', '216-545-0909'),
+                (2, 2, 'Maplegroov', '217-676-0808');
+
+
+
+                
+
     
             insert into login (username, password)
             values ('suneetha1','abcd1'), 
@@ -38,9 +82,8 @@ module.exports = {
             ('suneetha5','abcd5'), 
             ('suneetha6','abcd6'), 
             ('suneetha7','abcd7');
- 
-
-        `).then(() => {
+         `)
+        .then(() => {
             console.log('DB seeded!')
             res.sendStatus(200)
         }).catch(err => console.log('error seeding DB', err))
@@ -58,11 +101,41 @@ module.exports = {
     getLogin: (req, res) => {
         const user_name = req.params.username
         console.log("user_name :: ",user_name);
-        sequelize.query (`select login.username, login.password FROM login WHERE username = '${user_name}'`)
-        .then((dbRes) => res.status(200) .send(dbRes[0]))
+        sequelize.query (`select login.login_id, login.username, login.password FROM login WHERE username = '${user_name}'`)
+        .then((dbRes) => res.status(200).send(dbRes))
     
         .catch((err) => { console.log('User Not Found', err)
 
      })
+    },
+
+    getstates: (req, res) => {
+        sequelize.query(`SELECT states.stateID, states.stateName FROM states`)
+        .then((dbRes) => {
+            console.log(dbRes[0]);
+            res.status(200).send(dbRes[0])})
+    
+    .catch((err) => { console.log('display states', err)
+     })
+
+    },
+
+    getavailableMedicalServicesByState: (req, res)=> {
+
+        const stateID = req.params.id
+        console.log(stateID)
+        sequelize.query(`SELECT location, contact, states.stateName, states.stateId, medicalServices.serviceName, medicalServices.serviceId from availableMedicalServices
+            INNER JOIN states
+             ON states.stateId = availableMedicalServices.stateID
+             INNER JOIN  
+             ON medicalServices.serviceID = availableMedicalServices.serviceID
+             where availableMedicalServices.stateid = ${stateID}
+             
+            `)
+            .then((dbRes) => res.status(200) .send(dbRes[0]))
     }
+    
+    
 }
+        
+    
