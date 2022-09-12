@@ -2,6 +2,7 @@
 // const nameInput = document.querySelector('#name-input')
 const stateSelect = document.querySelector('#state-select');
 const availableDiv = document.getElementById("availableDiv");
+
 // const stateSlectedValue = document.querySelector('#state-select').value;
 // const statesList = document.querySelector('#states-list')
 
@@ -18,25 +19,114 @@ const getAvailableServicesByState = async() => {
 
     availableDiv.innerHTML="";
 
-    await axios.get(`http://localhost:5050/availableMedicalServicesByState/${stateSelectedValue}`)
-        .then(res => {
+    var res = await axios.get(`http://localhost:5050/availableMedicalServicesByState/${stateSelectedValue}`)
+        
             console.log("result data :: ",res.data)
             console.log("result data length  :: ",res.data.length)
             res.data.forEach(elem => {
-                let stateCard = `<div class="state-card">
+                let appointmetdiv = getappointmentdiv(elem);
+                let stateCard = `<div class="state-card" style>
                     <h2>${elem.statename}, ${elem.stateid},${elem.location},${elem.servicename}</h2>
-                    <h3>Contact: ${elem.contact}, 
-                 
-                    <a href='./appointment.html?id=${elem.id}'>Make an Appointment</a>
-                    </h3>
+                    <h3>Contact: ${elem.contact} </h3>
+                    
+                    <table>
+                          <tr>
+                    <td>
+                        <label for="name-input">Name:</label>
+                    </td>
+                    <td>
+                        <input type='text' id="name-input-${elem.id}"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="appointment-date">Date:</label>
+                    </td>
+                    <td>
+                        <input type="date" id="appointment-date-${elem.id}" >
+                    </td>
+                </tr>
+                </table>
+             
+                <button onClick="makeAppointment(${elem.id},"09/23/2022","example")">Submit</button>
+                               
                     <br> <br><br><br>
                     </div>
                 `
-
+               
                 availableDiv.innerHTML += stateCard
+              
+                
             })
-        })
+        
+    }
+
+
+const enableappointmentdiv =  (id,  location) =>{
+    let appointmentdiv = document.getElementById(`appointment-card-${id}`);
+    appointmentdiv.innerHTML = getappointmentdiv(id,location);
+    if (appointmentdiv.style.display === "none") {
+        appointmentdiv.style.display = "block";
+      } 
 }
+const getappointmentdiv =  (id, location) =>{
+
+    let appointmentCard = `
+    <h4>Appointment for ${location}</h4>
+    <table>
+    <tr>
+        <td>
+            <label for="name-input">Name:</label>
+        </td>
+        <td>
+            <input type='text' id="name-input-${id}"/>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <label for="appointment-date">Date:</label>
+        </td>
+        <td>
+            <input type="date" id="appointment-date-${id}" >
+        </td>
+    </tr>
+    </table>
+ 
+    <button onClick="makeAppointment(${id})">Submit</button>
+    </h3>
+    <br> <br><br><br>
+    `
+    return appointmentCard;
+
+}
+
+const makeAppointment = async(id, dateval, nameval) =>
+{
+alert(`in make appointment`)
+    // let name = document.getElementById(`name-input-${id}`);
+    // let date = document.getElementById(`appointment-date-${id}`);
+       
+        let body = {
+            contactName: nameval, 
+            appointmentDate : dateval,
+            serviceId: id
+    
+        }
+        alert(body)
+        try{
+                console.log("trying to insert from frontend")
+                const res =  await axios.post('http://localhost:5050/appointment', body)
+           
+                console.log(res)
+            
+        }
+        catch (errors)
+        {
+                console.error(errors)
+    
+        }
+    }
+
 
 const getStates = async()  => {
     try{

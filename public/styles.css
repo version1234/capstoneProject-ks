@@ -41,3 +41,8 @@ button{
     padding:14px 10px;
     transition:0.25px;
 }
+.state-card {
+    border: 1px solid black;
+    padding: 20px;
+    margin: 20px;
+}
