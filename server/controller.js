@@ -161,6 +161,7 @@ module.exports = {
         
     },
     bookAppointment: (req,res) => {
+        console.log("in bookappointment")
         var contactName  = req.body.name; 
         var appointmentDate  = req.body.date;
         var serviceid  = req.body.serviceid;
