@@ -4,59 +4,54 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Travel Journal</title>
-    <link rel="stylesheet" href="index.css">
+    <title>Homepage</title>
+    <link href="styles.css" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <h1>Available Services</h1>
-    </header>
+    <content>
+        <header>
+            Local Senior Immigrant   Service
+           </header>
+        <img src="https://www.plymouth.org/wp-content/uploads/2020/11/katie-moum-7XGtYefMXiQ-unsplash-scaled-e1604342793824-1024x652.jpg" >
+       </content>
+      
+    <nav>
+		<ol>
+	      
+	     <li class="crumb"><a href="./reqPage.html">Your Request Page</a></li>
+	        <li class="crumb"><a href="./avaServices.html">Local Available Services</a></li>
+			<li class="crumb"><a href="./resToReq.html">Responce to Your Request</a></li>
+	    </ol>
+	</nav>
+    <h1>
+        ABOUT US:
+    </h1>
+    <p>
+        Building A Better Health Care System<br></br>
+       
 
-    <main>
-        <!--aside>
-            <h2>Add an Entry</h2>
+Many patients may not know it, but there are tens of billions of dollars in rebates and discounts on medicines that are given to insurance companies and other middlemen. Too often these rebates and discounts don’t get to patients who need them. As a result, some patients pay more for medicines than their insurance company pays.<br></br>
 
-         <form>
-                <label for="name-input">City Name:</label>
-                <input type='text' id="name-input"/>
+Unlike government price setting, which threatens Americans’ access to crucial, breakthrough medicines, we should make sure the rebates and discounts insurers receive get passed on to patients at the pharmacy counter – not pocketed by the insurance companies, hospitals and middlemen.<br></br>
 
-                <label for="country-select">Country:</label>
-                <select id="country-select"></select>
+Let’s work together to make sure medicines are more affordable and accessible for senior immigrants.
+    </p>
 
-                <h4>Rating</h4>
-                <div class="radio">
-                    <label for="rating-one">1:</label>
-                    <input type="radio" name="rating" value="1" id="rating-one" checked="true"/>
-                </div>
-
-                <div class="radio">
-                    <label for="rating-two">2:</label>
-                    <input type="radio" name="rating" value="2" id="rating-two"/>
-                </div>
-
-                <div class="radio">
-                    <label for="rating-three">3:</label>
-                    <input type="radio" name="rating" value="3" id="rating-three"/>
-                </div>
-
-                <div class="radio">
-                    <label for="rating-four">4:</label>
-                    <input type="radio" name="rating" value="4" id="rating-four"/>
-                </div>
-
-                <div class="radio">
-                    <label for="rating-five">5:</label>
-                    <input type="radio" name="rating" value="5" id="rating-five"/>
-                </div>
-                
-                <button>Add</button>
-            </form>
-        </aside> -->
-
-        <section id="state-list"></section>
-    </main>
-
-    <script src="../node_modules/axios/dist/axios.min.js"></script>
+        
+    <div class="login">
+        <h1>Sign Up Here:</h1>
+        <form action="/auth" method="post">
+            <label for="username">
+                 </label>
+            <input type="text" name="username" placeholder="Username" id="username" required>
+            <label for="password">
+                 </label><br></br>
+            <input type="password" name="password" placeholder="Password" id="password" required><br></br>
+            
+            <input type="button" id="submit_button" value="SignIn">
+        </form>
+    </div>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="index.js"></script>
 </body>
 </html>

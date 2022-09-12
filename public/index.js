@@ -33,9 +33,9 @@ console.log(usernameInput.value);
         console.log(res.length)
     
         if(res.data[0].password === passwordInput.value ){
-            console.log(" password is  equal ");
-            window.location.href = `./yourReqPage.html?${res.data[0].login_id }`
-            // axios.get('/reqpage');
+         
+            // axios   console.log(" password is  equal ");
+            window.location.href = `./yourReqPage.html?${res.data[0].login_id }`.get('/reqpage');
             // axios.post(`http://localhost:5051/public/ReqPag)
             // .then(res => {
             //     console.log("entered into req page");

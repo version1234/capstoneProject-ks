@@ -21,5 +21,6 @@ const {seed, getLogins, bookAppointment, getLogin, getstates, getavailableMedica
 app.get('/availableMedicalServicesByState/:id', getavailableMedicalServicesByState)
 app.get('/availableMedicalServices/:id', getavailableMedicalServicesById)
 app.post('/appointment', bookAppointment)
+
  
  app.listen(SERVER_PORT, () => console.log(`listening on port ${SERVER_PORT}`));
