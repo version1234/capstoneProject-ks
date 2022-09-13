@@ -76,8 +76,10 @@ module.exports = {
                 (1, 3, 'Woodberry', '216-545-0910', 'image3.jpeg'),
                 (1, 3, 'minneapolis', '216-555-0910', 'image4.jpeg'),
                 (1, 2, 'EdenPrairie', '666-545-0909', 'image2.jpeg'),
-                (2, 1, 'Maplegrove', '217-676-8888', 'image5.jpeg'),
-                (2, 2, 'Maplegrove', '217-676-0808', 'image6.jpeg');
+                (2, 1, 'Appleton', '217-676-8888', 'image5.jpeg'),
+                (2, 2, 'Bayfield', '217-676-0808', 'image6.jpeg'),
+                (3, 3, 'DesMonies', '243-676-0778', 'image3.jpeg'),
+                (3, 1, 'Waterloo', '225-656-0990', 'image1.jpeg');
 
  
              create table appointment(
