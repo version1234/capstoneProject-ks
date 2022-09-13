@@ -1,13 +1,13 @@
 
 html{
-    background:lightblue
+    background:rgb(98, 127, 179)
 }
 body {
 		
-	background: rgb(148, 201, 239);
+	background: rgb(167, 217, 205);
 	padding: 1rem;
 	max-width:fit-content;
-	margin: 1rem;
+	margin-left: 500px;
     
 	font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
 	}
@@ -17,20 +17,23 @@ body {
        
     }
     img {
-     width: 1200px;
-        margin-left: 22em;
+        width: 600px;
+        margin-left: 10em;
         max-height: 300px;
     }
     header{
         font-size:xx-large;
         font-family:cursive;
         margin-left: 25em;
+        text-align:center;
     }
-h1{
-    font-size:larger;
-    font-family:cursive;
-    text-decoration:underline;
-}
+    h1{
+        font-size:larger;
+        font-family:cursive;
+        text-align:center;
+        margin: auto;
+        margin-left: 3em;
+    }
 
 label{
     font-family:cursive;
@@ -45,4 +48,8 @@ button{
     border: 1px solid black;
     padding: 20px;
     margin: 20px;
+    
+    
+    
+    
 }

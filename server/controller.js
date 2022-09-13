@@ -23,7 +23,7 @@ module.exports = {
             drop table if exists states;
             drop table if exists medicalServices;
             drop table if exists availableMedicalServices;
-            drop table if exists appointments;
+            drop table if exists appointment;
             
 
             create table login (    
@@ -32,56 +32,6 @@ module.exports = {
                 password varchar(255)
             );
 
-            create table states(  
-            stateId serial primary key,
-            stateName varchar(255)
-            );
-            
-
-            create table medicalServices(
-            serviceId serial primary key,
-            serviceName varchar(255)
-            );
-
-            create table availableMedicalServices(
-                id serial primary key,
-                stateId int,
-                serviceId int,
-                location varchar,
-                contact varchar
-             );
- 
-             create table appointment(
-                id serial primary key,
-                contactName varchar(255),
-                serviceId int,
-                appointmentDate date
-             );
-
-                insert into states(stateName) values
-                ('Minnesota'),
-                ('Wisconsin'),
-                ('Iowa');
-
-                insert into medicalServices(serviceName) values
-                ('Internal Medicine'),
-                ('Cardiology'),
-                ('Orthopedics');
-
-                insert into availableMedicalServices (stateId, serviceId ,location, contact)
-                values (1, 1, 'Plymouth', '216-345-0000'),
-                (1, 2, 'EdenPrairie', '216-545-0909'),
-                (1, 3, 'Woodberry', '216-545-0910'),
-                (1, 3, 'minneapolis', '216-555-0910'),
-                (1, 2, 'EdenPrairie2', '666-545-0909'),
-                (2, 1, 'Maplegrove', '217-676-8888'),
-                (2, 2, 'Maplegroov', '217-676-0808');
-
-
-
-                
-
-    
             insert into login (username, password)
             values ('suneetha1','abcd1'), 
             ('suneetha2','abcd2'), 
@@ -90,6 +40,55 @@ module.exports = {
             ('suneetha5','abcd5'), 
             ('suneetha6','abcd6'), 
             ('suneetha7','abcd7');
+
+            create table states(  
+            stateId serial primary key,
+            stateName varchar(255)
+            );
+            insert into states(stateName) values
+            ('Minnesota'),
+            ('Wisconsin'),
+            ('Iowa');
+            
+
+            create table medicalServices(
+            serviceId serial primary key,
+            serviceName varchar(255)
+            );
+
+            insert into medicalServices(serviceName) values
+            ('Internal Medicine'),
+            ('Cardiology'),
+            ('Orthopedics');
+
+            create table availableMedicalServices(
+                id serial primary key,
+                stateId int,
+                serviceId int,
+                location varchar,
+                contact varchar,
+                imagepath varchar
+             );
+
+             insert into availableMedicalServices (stateId, serviceId ,location, contact, imagepath)
+                values (1, 1, 'Plymouth', '216-345-0000', 'image1.jpeg'),
+                (1, 2, 'EdenPrairie', '216-545-0909', 'image2.jpeg'),
+                (1, 3, 'Woodberry', '216-545-0910', 'image3.jpeg'),
+                (1, 3, 'minneapolis', '216-555-0910', 'image4.jpeg'),
+                (1, 2, 'EdenPrairie', '666-545-0909', 'image2.jpeg'),
+                (2, 1, 'Maplegrove', '217-676-8888', 'image5.jpeg'),
+                (2, 2, 'Maplegrove', '217-676-0808', 'image6.jpeg');
+
+ 
+             create table appointment(
+                id serial primary key,
+                contactName varchar(255),
+                serviceId int,
+                appointmentDate varchar
+             );
+
+    
+           
          `)
         .then(() => {
             console.log('DB seeded!')
@@ -131,7 +130,7 @@ module.exports = {
     getavailableMedicalServicesByState: (req, res)=> {
         const stateID = req.params.id
         console.log(stateID)
-        sequelize.query(`SELECT ams.id, location, contact, s.stateName, s.stateId , ms.serviceId, ms.serviceName from availableMedicalServices  ams   
+        sequelize.query(`SELECT ams.id, ams.imagepath, location, contact, s.stateName, s.stateId , ms.serviceId, ms.serviceName from availableMedicalServices  ams   
             INNER JOIN  states s 
             ON  s.stateId = ams.stateID 
             INNER JOIN  medicalServices ms
@@ -146,8 +145,9 @@ module.exports = {
         
     },
     getavailableMedicalServicesById: (req, res)=> {
-      
-        sequelize.query(`SELECT ams.id, ams.location, ams.contact, s.stateName, s.stateId , ms.serviceId, ms.serviceName from availableMedicalServices  ams   
+      if (req.params.id === 'undefined' || req.params.id <= 0)
+       throw new Error("Bad request")
+        sequelize.query(`SELECT ams.id, ams.imagepath, ams.location, ams.contact, s.stateName, s.stateId , ms.serviceId, ms.serviceName from availableMedicalServices  ams   
             INNER JOIN  states s 
             ON  s.stateId = ams.stateID 
             INNER JOIN  medicalServices ms
@@ -161,16 +161,20 @@ module.exports = {
         
     },
     bookAppointment: (req,res) => {
+        // alert("bookapoitn")
         console.log("in bookappointment")
-        var contactName  = req.body.name; 
-        var appointmentDate  = req.body.date;
-        var serviceid  = req.body.serviceid;
+        var contactName  = req.body.contactName; 
+        var appointmentDate  = req.body.appointmentDate;
+        var serviceid  = req.body.serviceId;
 
 
         console.log("trying to insert",contactName,appointmentDate,serviceid);
-        const insert_str = `insert into appointment (contactName, serviceId, appointmentDate) values ('${contactName}',${appointmentDate},${serviceid})`;
+        // alert(serviceid)
+        const insert_str = `insert into appointment (contactName, serviceId, appointmentDate) values ('${contactName}',${serviceid},'${appointmentDate}')`;
         sequelize.query(insert_str)
-        .then((dbRes) => res.status(200).send(dbRes[0]))
+        .then((dbRes) => {
+            console.log("respons after insert", dbRes[0])
+            res.status(200).send(dbRes[0])})
         .catch((err) => { console.log('error inserting appointment', err)})
 
 

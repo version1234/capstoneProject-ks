@@ -23,33 +23,19 @@ const getAvailableServicesByState = async() => {
         
             console.log("result data :: ",res.data)
             console.log("result data length  :: ",res.data.length)
+        
             res.data.forEach(elem => {
                 let appointmetdiv = getappointmentdiv(elem);
                 let stateCard = `<div class="state-card" style>
-                    <h2>${elem.statename}, ${elem.stateid},${elem.location},${elem.servicename}</h2>
+                <img src="./images/${elem.imagepath}"></img>
+                
+                    <h2>${elem.servicename}<br>${elem.location} <br> ${elem.statename}</h2>
                     <h3>Contact: ${elem.contact} </h3>
-                    
-                    <table>
-                          <tr>
-                    <td>
-                        <label for="name-input">Name:</label>
-                    </td>
-                    <td>
-                        <input type='text' id="name-input-${elem.id}"/>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label for="appointment-date">Date:</label>
-                    </td>
-                    <td>
-                        <input type="date" id="appointment-date-${elem.id}" >
-                    </td>
-                </tr>
-                </table>
-             
-                <button onClick="makeAppointment(${elem.id},"09/23/2022","example")">Submit</button>
-                               
+                
+               
+                   
+                        
+                <a href='./appointment.html?id=${elem.id}'>Make an Appointment</a>
                     <br> <br><br><br>
                     </div>
                 `

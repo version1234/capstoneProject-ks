@@ -6,7 +6,7 @@ const axios = require("axios");
  const path = require('path')
  const app = express();
  const SERVER_PORT = 5050
-const {seed, getLogins, bookAppointment, getLogin, getstates, getavailableMedicalServicesByState, getavailableMedicalServicesById} = require('./controller.js')
+const {seed, getLogins,  bookAppointment, getLogin, getstates, getavailableMedicalServicesByState, getavailableMedicalServicesById} = require('./controller.js')
  app.use(express.json())
  app.use(cors());
 //  app.use(axios());

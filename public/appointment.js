@@ -2,14 +2,16 @@ var urlParams;
 const locationdiv = document.getElementById("location")
 const nameInput  = document.getElementById("name-input")
 const appointmentDate = document.getElementById("appointment-date")
-const appointmentLocationId = document.getElementById("serviceId")
+// const appointmentLocationId = document.getElementById("serviceId")
 const appointmentBtn  = document.getElementById("appointmentBtn")
 
 const getLocataion = async() => {
        
     try{
-      console.log(`id value ${appointmentLocationId.value}`)
-        const response = await axios.get(`http://localhost:5050/availableMedicalServices/${appointmentLocationId.value}`)
+        if (document.getElementById("serviceId").value === 'undefined')
+        return
+      console.log(`id value ${document.getElementById("serviceId").value}`)
+        const response = await axios.get(`http://localhost:5050/availableMedicalServices/${document.getElementById("serviceId").value}`)
         console.log(response);
       
          locationdiv.innerHTML= response.data[0].location;
@@ -34,7 +36,9 @@ const getLocataion = async() => {
     while (match = search.exec(query))
        urlParams[decode(match[1])] = decode(match[2]);
        console.log(urlParams)
-       document.getElementById('serviceId').value = urlParams["id"];
+       if( !(urlParams["id"] == 'undefined')){
+            document.getElementById('serviceId').value = urlParams["id"];
+        }
        getLocataion();
 })();
 
@@ -45,9 +49,9 @@ function isInTheFuture(date) {
     return date > today;
   }
 
-function createAppointment() {
-    console.log(` serviceid in createappointment ${appointmentLocationId.value}`)
-    if (nameInput.value < 1) {
+const  createAppointment = async() => {
+    console.log(` serviceid in createappointment ${document.getElementById("serviceId").value}`)
+    if (nameInput.value.length < 1) {
         alert ('You must enter your details for making an appointment')
         return
     }
@@ -58,25 +62,26 @@ function createAppointment() {
     //     return
     // }
    
-    let body = {
+    const body = {
         contactName: nameInput.value, 
         appointmentDate : appointmentDate.value,
-        serviceId: appointmentLocationId.value
+        serviceId: document.getElementById("serviceId").value
 
     }
     console.log()
+//   alert("debug 1" + document.getElementById("serviceId").value);
     try{
-            console.log("trying to insert from frontend")
-            const res =  axios.post('http://localhost:5050/appointment', body)
-       
-            console.log(res)
-            nameInput.value = ''
-            appointmentDate = new Date()
-            appointmentLocationId.value = res.data.serviceid
-            getLocataion();
-        
-    }catch (errors){
-            console.error(errors)
+            console.log("trying to insert from frontend" + body.serviceId)
+            alert("trying to insert from frontend" + body.serviceId)
+            const res =  await axios.post('http://localhost:5050/appointment', body)
+       nameInput.value = body.Name;
+       appointmentDate.value = body.appointmentDate;
+       document.getElementById("servceId").value = body.serviceId
+       alert(`appointment created for ${appointmentDate.value}`)
+             getLocataion();
+              }
+              catch (errors){
+             console.error(errors)
 
         }
 }
