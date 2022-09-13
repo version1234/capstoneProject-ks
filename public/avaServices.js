@@ -1,10 +1,7 @@
-// const form = document.querySelector('form')
-// const nameInput = document.querySelector('#name-input')
+
 const stateSelect = document.querySelector('#state-select');
 const availableDiv = document.getElementById("availableDiv");
 
-// const stateSlectedValue = document.querySelector('#state-select').value;
-// const statesList = document.querySelector('#states-list')
 
 function handleSubmit(e) {
     e.preventDefault()  
@@ -23,27 +20,36 @@ const getAvailableServicesByState = async() => {
         
             console.log("result data :: ",res.data)
             console.log("result data length  :: ",res.data.length)
-        
+            let tabledataL = '<table class="tableclass">'
+            let i=2;
             res.data.forEach(elem => {
-                let appointmetdiv = getappointmentdiv(elem);
-                let stateCard = `<div class="state-card" style>
-                <img src="./images/${elem.imagepath}"></img>
-                
-                    <h2>${elem.servicename}<br>${elem.location} <br> ${elem.statename}</h2>
-                    <h3>Contact: ${elem.contact} </h3>
-                
-               
-                   
-                        
+                // let appointmetdiv = getappointmentdiv(elem);
+                if(i%2===0){
+                    tabledataL +='<tr class="trclass">'
+                }
+                tabledataL += '<td class ="tdclass">'
+
+                let stateCard = ` <div class="state-card" >
+                <img src="./images/${elem.imagepath}" class = "imgcard"></img>
+            
+                <h2>${elem.servicename}<br>${elem.location} <br> ${elem.statename}</h2>
+                <h3>Contact: ${elem.contact} </h3>
                 <a href='./appointment.html?id=${elem.id}'>Make an Appointment</a>
-                    <br> <br><br><br>
-                    </div>
+                </div>
                 `
                
-                availableDiv.innerHTML += stateCard
-              
+                // availableDiv.innerHTML += stateCard
+                tabledataL += stateCard
+                tabledataL += `</td>`
+                if(i%2===0){
+                    tabledataL += `</tr>`
+                }
+                i++;
                 
             })
+
+            tabledataL += `</table>`
+            availableDiv.innerHTML  += tabledataL
         
     }
 

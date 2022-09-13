@@ -178,8 +178,22 @@ module.exports = {
         .catch((err) => { console.log('error inserting appointment', err)})
 
 
-    }
+    },
+    listAppointments: (req,res) => {
+        sequelize.query(`SELECT apt.id, apt.contactName, apt.appointmentDate, ams.id, ams.location, ams.contact FROM appointment apt 
+        INNER JOIN  availableMedicalServices  ams 
+        ON apt.serviceId = ams.id
 
+        
+        `)
+        .then((dbRes) => {
+            console.log(dbRes[0]);
+            res.status(200).send(dbRes[0])})
+    
+    .catch((err) => { console.log('display appointments', err)
+     })
+
+    }
     
     
 }

@@ -2,37 +2,41 @@
 html{
     background:rgb(98, 127, 179)
 }
-body {
-		
+body {	
 	background: rgb(167, 217, 205);
-	padding: 1rem;
-	max-width:fit-content;
-	margin-left: 500px;
-    
-	font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
-	}
-    .crumb {
-        margin-left: 22em;
-        display:inline-flex;
-       
-    }
-    img {
-        width: 600px;
-        margin-left: 10em;
-        max-height: 300px;
-    }
-    header{
-        font-size:xx-large;
-        font-family:cursive;
-        margin-left: 25em;
-        text-align:center;
-    }
-    h1{
-        font-size:larger;
-        font-family:cursive;
-        text-align:center;
-        margin: auto;
-        margin-left: 3em;
+	padding: rem;
+	max-width:1000px;
+	margin-left: 100px;
+	font-family:'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', 'sans-serif'
+}
+.crumb {
+    display:inline-flex;
+    margin-left: auto;
+}
+
+.center{
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+header{
+    font-size:xx-large;
+    font-family:cursive;
+    /* margin-left: 25em; */
+    text-align:center;
+}
+h1{
+    font-size:larger;
+    font-family:cursive;
+    text-align:center;
+    margin: auto;
+    margin-left: 3em;
+}
+img {
+    width: 1000px;
+        margin-right:200px;
+        max-height: 600px;
     }
 
 label{
@@ -45,11 +49,37 @@ button{
     transition:0.25px;
 }
 .state-card {
-    border: 1px solid black;
+    border: 2px solid black;
     padding: 20px;
-    margin: 20px;
-    
-    
-    
-    
+    /* margin: 600px; */
+    width: 415px;
+    height: 400px;
+     
 }
+.appoint_card{
+
+    border: 2px solid black;
+    padding: 20px;
+    width: 415px;
+    height: 300px;
+}
+
+.imgcard{
+    width:400px;
+    height:200px;
+}
+.tableclass{
+    width:1000px;
+    border: 3px solid red;
+}
+
+.trclass{
+    width:1000px;
+    height:420px;
+}
+
+.tdclass{
+    width:400px;
+    height:420px;
+}
+

@@ -4,15 +4,67 @@ const nameInput  = document.getElementById("name-input")
 const appointmentDate = document.getElementById("appointment-date")
 // const appointmentLocationId = document.getElementById("serviceId")
 const appointmentBtn  = document.getElementById("appointmentBtn")
+const appointmentListDiv  = document.getElementById("appoitmentListDiv")
+
+
+const listAppointmnets = async() => {
+       
+    try{
+
+        // alert("test");
+        const response = await axios.get(`http://localhost:5050/appointments`)
+        console.log(response);
+        // alert(response.data[0].contactname)
+        let tabledataL = '<table class="tableclass">'
+        let i=2;
+        response.data.forEach(elem => {
+            if(i%2===0){
+                tabledataL +='<tr class="trclass">'
+            }
+            tabledataL += '<td class ="tdclass">'
+            let appointCard =  `
+            <div class="appoint_card">
+                <h2>Name : ${elem.contactname}<br> 
+                Date: ${elem.appointmentdate}<br>
+                Location : ${elem.location}<br>
+                Contact : ${elem.contact}<br>
+
+                </h2>
+            </div>
+            `
+            tabledataL += appointCard
+            tabledataL += '</td>'
+            if(i%2===0){
+                tabledataL += '</tr>'
+            }
+            i++;
+        })
+
+        tabledataL += `</table>`;
+        appointmentListDiv.innerHTML  += tabledataL
+      
+
+
+ 
+     }
+        catch(error) {
+         console.error(error)
+ 
+         }
+}
+
 
 const getLocataion = async() => {
        
     try{
-        if (document.getElementById("serviceId").value === 'undefined')
+        if (document.getElementById("serviceId").value === 'undefined'){
+            listAppointmnets()
+            document.getElementById("bookApointmentForm").style.visibility ="hidden"
         return
-      console.log(`id value ${document.getElementById("serviceId").value}`)
+    }
+    //   console.log(`id value ${document.getElementById("serviceId").value}`)
         const response = await axios.get(`http://localhost:5050/availableMedicalServices/${document.getElementById("serviceId").value}`)
-        console.log(response);
+        // console.log(response);
       
          locationdiv.innerHTML= response.data[0].location;
          appointmentLocationId.value = response.data[0].id;
@@ -72,7 +124,7 @@ const  createAppointment = async() => {
 //   alert("debug 1" + document.getElementById("serviceId").value);
     try{
             console.log("trying to insert from frontend" + body.serviceId)
-            alert("trying to insert from frontend" + body.serviceId)
+            // alert("trying to insert from frontend" + body.serviceId)
             const res =  await axios.post('http://localhost:5050/appointment', body)
        nameInput.value = body.Name;
        appointmentDate.value = body.appointmentDate;

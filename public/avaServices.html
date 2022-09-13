@@ -8,28 +8,33 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    
     <content>
         
            <img src="https://www.togetherproject.ca/wp-content/themes/togetherproject/images/logo-mobile.png" alt="Together Project">
-       </content>
+
+           <nav>
+            <ol>
+                <li class="crumb"><a href="./appointment.html">Current Appointments </a></li>
+            </ol>
+        </nav>        </content>
 
     <main>
-        <aside>
+ 
             <h2>Choose a state</h2>
         
 
             <form>
-            
-
+        
                 <label for="state-select">State:</label>
-                <select id="state-select" ></select>
-
-                <br> <br> <br> <br> <br> <br>
+                <select id="state-select" ><option value="0"></option></select>
+                <br> <br>
+            </form>
+            <form>
                 <div id="availableDiv"></div>
             </form>
-        </aside>
+       
 
-        <section id="states-list"></section>
     </main>
 
     <script src="../node_modules/axios/dist/axios.min.js"></script>

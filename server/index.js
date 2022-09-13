@@ -6,7 +6,7 @@ const axios = require("axios");
  const path = require('path')
  const app = express();
  const SERVER_PORT = 5050
-const {seed, getLogins,  bookAppointment, getLogin, getstates, getavailableMedicalServicesByState, getavailableMedicalServicesById} = require('./controller.js')
+const {seed, getLogins,  bookAppointment, listAppointments, getLogin, getstates, getavailableMedicalServicesByState, getavailableMedicalServicesById} = require('./controller.js')
  app.use(express.json())
  app.use(cors());
 //  app.use(axios());
@@ -21,6 +21,7 @@ const {seed, getLogins,  bookAppointment, getLogin, getstates, getavailableMedic
 app.get('/availableMedicalServicesByState/:id', getavailableMedicalServicesByState)
 app.get('/availableMedicalServices/:id', getavailableMedicalServicesById)
 app.post('/appointment', bookAppointment)
+app.get('/appointments',listAppointments)
 
  
  app.listen(SERVER_PORT, () => console.log(`listening on port ${SERVER_PORT}`));
