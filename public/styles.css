@@ -1,23 +1,28 @@
 
 html{
-    background:rgb(98, 127, 179)
+    background:rgb(177, 188, 209)
 }
 body {	
-	background: rgb(167, 217, 205);
+	background: rgb(197, 230, 228);
 	padding: rem;
 	max-width:1000px;
-	margin-left: 100px;
+    margin-top: 200px;
+    margin-bottom: 200px;
+	margin-left: 500px;
 	font-family:'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', 'sans-serif'
+    
+    
 }
 .crumb {
     display:inline-flex;
-    margin-left: auto;
+    margin-left:800px
 }
 
 .center{
     margin-left: auto;
     margin-right: auto;
     display: block;
+    
 }
 
 header{
@@ -36,17 +41,36 @@ h1{
 img {
     width: 1000px;
         margin-right:200px;
-        max-height: 600px;
+        max-height: 300px;
+    
+        
+    }
+    h1{
+        font-size: x-large;
+        font-style: oblique;
+        text-decoration-line: underline;
+        margin-left: 10px;
+    }
+    h2{
+        font-family:cursive;
+        font-display:initial;
+        text-decoration-line: underline;
+    }
+    p{
+        font-size: larger;
+        font-style:oblique;
     }
 
 label{
     font-family:cursive;
 }
-button{
-    font-family:cursive;
-    margin-left: em;
-    padding:14px 10px;
-    transition:0.25px;
+#appointmentBtn{
+    font-family:Arial, Helvetica, sans-serif;
+    margin-left: 150px;
+    background-color: cadetblue;
+    border-style: solid;
+    border-color: red rgba(170, 50, 220, .6) green;
+  
 }
 .state-card {
     border: 2px solid black;
@@ -54,6 +78,7 @@ button{
     /* margin: 600px; */
     width: 415px;
     height: 400px;
+    
      
 }
 .appoint_card{
@@ -70,7 +95,8 @@ button{
 }
 .tableclass{
     width:1000px;
-    border: 3px solid red;
+    border: 3px solid rgb(17, 16, 16);
+    
 }
 
 .trclass{
@@ -81,5 +107,17 @@ button{
 .tdclass{
     width:400px;
     height:420px;
-}
 
+}
+#availableDiv{
+    display:flex;
+    flex-wrap: wrap;
+    margin-left: 40px;
+
+}
+#appointmentListDiv{
+    display:flex;
+    flex-wrap: wrap;
+    margin-left: 40px;
+
+}

@@ -20,14 +20,14 @@ const getAvailableServicesByState = async() => {
         
             console.log("result data :: ",res.data)
             console.log("result data length  :: ",res.data.length)
-            let tabledataL = '<table class="tableclass">'
+            // let tabledataL = '<table class="tableclass">'
             let i=2;
             res.data.forEach(elem => {
                 // let appointmetdiv = getappointmentdiv(elem);
-                if(i%2===0){
-                    tabledataL +='<tr class="trclass">'
-                }
-                tabledataL += '<td class ="tdclass">'
+                // if(i%2===0){
+                //     tabledataL +='<tr class="trclass">'
+                // }
+                // tabledataL += '<td class ="tdclass">'
 
                 let stateCard = ` <div class="state-card" >
                 <img src="./images/${elem.imagepath}" class = "imgcard"></img>
@@ -37,13 +37,13 @@ const getAvailableServicesByState = async() => {
                 <a href='./appointment.html?id=${elem.id}'>Make an Appointment</a>
                 </div>
                 `
-               
+               availableDiv.insertAdjacentHTML("beforeend", stateCard)
                 // availableDiv.innerHTML += stateCard
-                tabledataL += stateCard
-                tabledataL += `</td>`
-                if(i%2===0){
-                    tabledataL += `</tr>`
-                }
+                // tabledataL += stateCard
+                // tabledataL += `</td>`
+                // if(i%2===0){
+                //     tabledataL += `</tr>`
+                // }
                 i++;
                 
             })

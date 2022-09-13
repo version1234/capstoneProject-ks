@@ -4,7 +4,7 @@ const nameInput  = document.getElementById("name-input")
 const appointmentDate = document.getElementById("appointment-date")
 // const appointmentLocationId = document.getElementById("serviceId")
 const appointmentBtn  = document.getElementById("appointmentBtn")
-const appointmentListDiv  = document.getElementById("appoitmentListDiv")
+const appointmentListDiv  = document.getElementById("appointmentListDiv")
 
 
 const listAppointmnets = async() => {
@@ -18,10 +18,10 @@ const listAppointmnets = async() => {
         let tabledataL = '<table class="tableclass">'
         let i=2;
         response.data.forEach(elem => {
-            if(i%2===0){
-                tabledataL +='<tr class="trclass">'
-            }
-            tabledataL += '<td class ="tdclass">'
+            // if(i%2===0){
+            //     tabledataL +='<tr class="trclass">'
+            // }
+            // tabledataL += '<td class ="tdclass">'
             let appointCard =  `
             <div class="appoint_card">
                 <h2>Name : ${elem.contactname}<br> 
@@ -32,11 +32,12 @@ const listAppointmnets = async() => {
                 </h2>
             </div>
             `
-            tabledataL += appointCard
-            tabledataL += '</td>'
-            if(i%2===0){
-                tabledataL += '</tr>'
-            }
+            appointmentListDiv.insertAdjacentHTML("beforeend", appointCard)
+            // tabledataL += appointCard
+            // tabledataL += '</td>'
+            // if(i%2===0){
+            //     tabledataL += '</tr>'
+            // }
             i++;
         })
 
