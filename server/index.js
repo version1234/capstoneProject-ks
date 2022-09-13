@@ -25,17 +25,20 @@ app.get('/appointments',listAppointments)
 
 
 app.get('/', function(req, res){
-    res.sendFile(path.join(__dirname,'../avaServices.html'));
+    res.sendFile(path.join(__dirname,'../public/avaServices.html'));
 });
 
-// app.get('/styles', function(req, res) {
-//     res.sendFile(path.join(__dirname,'/public/styles.css'));
-// });
+app.get('/styles', function(req, res) {
+    res.sendFile(path.join(__dirname,'../public/styles.css'));
+});
 
-// app.get('/js', (req, res) => {
-//     res.sendFile(path.join(__dirname, '/public/avaServices.js'));
-// });
+app.get('/js', (req, res) => {
+    res.sendFile(path.join(__dirname, '/public/avaServices.js'));
+});
 
+app.get('/js', (req, res) => {
+    res.sendFile(path.join(__dirname, '/public/appointment.js'));
+});
 
  const port = process.env.PORT || 5050;
  app.listen(port, () => {console.log(`listening on port ${port}`);
