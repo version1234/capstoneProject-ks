@@ -32,11 +32,15 @@ app.get('/styles', function(req, res) {
     res.sendFile(path.join(__dirname,'../public/styles.css'));
 });
 
-app.get('/js', (req, res) => {
+app.get('/avasjs', (req, res) => {
     res.sendFile(path.join(__dirname, '../public/avaServices.js'));
 });
 
-app.get('/js', (req, res) => {
+app.get('/', function(req, res){
+    res.sendFile(path.join(__dirname,'../public/appointment.html'));
+});
+
+app.get('/apptjs', (req, res) => {
     res.sendFile(path.join(__dirname, '../public/appointment.js'));
 });
 

@@ -182,9 +182,10 @@ module.exports = {
 
     },
     listAppointments: (req,res) => {
-        sequelize.query(`SELECT apt.id, apt.contactName, apt.appointmentDate, ams.id, ams.location, ams.contact FROM appointment apt 
+        sequelize.query(`SELECT apt.id, apt.contactName, apt.appointmentDate, ams.id as amsid, ams.location, ams.contact FROM appointment apt 
         INNER JOIN  availableMedicalServices  ams 
         ON apt.serviceId = ams.id
+        order By apt.id desc 
 
         
         `)
