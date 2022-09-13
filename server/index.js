@@ -3,7 +3,7 @@
 const express = require('express');
 const cors = require('cors');
 const axios = require("axios");
- const path = require('path')
+ const path = require('path');
  const app = express();
  //const SERVER_PORT = 5050
 const {seed, getLogins,  bookAppointment, listAppointments, getLogin, getstates, getavailableMedicalServicesByState, getavailableMedicalServicesById} = require('./controller.js')
@@ -33,11 +33,11 @@ app.get('/styles', function(req, res) {
 });
 
 app.get('/js', (req, res) => {
-    res.sendFile(path.join(__dirname, '/public/avaServices.js'));
+    res.sendFile(path.join(__dirname, '../public/avaServices.js'));
 });
 
 app.get('/js', (req, res) => {
-    res.sendFile(path.join(__dirname, '/public/appointment.js'));
+    res.sendFile(path.join(__dirname, '../public/appointment.js'));
 });
 
  const port = process.env.PORT || 5050;
