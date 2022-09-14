@@ -30,6 +30,7 @@ header{
     font-family:cursive;
     /* margin-left: 25em; */
     text-align:center;
+    text-decoration:underline;
 }
 h1{
     font-size:larger;
@@ -55,10 +56,13 @@ img {
         font-family:cursive;
         font-display:initial;
         text-decoration-line: underline;
+        margin-left: 20px;
     }
     p{
         font-size: larger;
         font-style:oblique;
+        margin-left: 20px;
+        
     }
 
 label{
@@ -75,40 +79,28 @@ label{
 .state-card {
     border: 2px solid black;
     padding: 20px;
-    /* margin: 600px; */
     width: 415px;
-    height: 400px;
-    
-     
+    height: 400px;    
 }
-.appoint_card{
+#state-select{
+    margin-left: 10px;
+}
+label{
+    margin-left: 20px;
+}
 
+.appoint_card{
     border: 2px solid black;
     padding: 20px;
     width: 415px;
-    height: 300px;
+    height: 250px
 }
 
 .imgcard{
     width:400px;
     height:200px;
 }
-.tableclass{
-    width:1000px;
-    border: 3px solid rgb(17, 16, 16);
-    
-}
 
-.trclass{
-    width:1000px;
-    height:420px;
-}
-
-.tdclass{
-    width:400px;
-    height:420px;
-
-}
 #availableDiv{
     display:flex;
     flex-wrap: wrap;
@@ -118,6 +110,7 @@ label{
 #appointmentListDiv{
     display:flex;
     flex-wrap: wrap;
-    margin-left: 40px;
+    /* margin-left: 40px; */
+    border: 3px solid rgb(20, 16, 16);
 
 }

@@ -2,7 +2,6 @@ var urlParams;
 const locationdiv = document.getElementById("location")
 const nameInput  = document.getElementById("name-input")
 const appointmentDate = document.getElementById("appointment-date")
-// const appointmentLocationId = document.getElementById("serviceId")
 const appointmentBtn  = document.getElementById("appointmentBtn")
 const appointmentListDiv  = document.getElementById("appointmentListDiv")
 
@@ -11,20 +10,15 @@ const listAppointmnets = async() => {
        
     try{
 
-        // alert("test");
         const response = await axios.get(`http://localhost:5050/appointments`)
         console.log(response);
-        // alert(response.data[0].contactname)
-        let tabledataL = '<table class="tableclass">'
-        let i=2;
+       
         response.data.forEach(elem => {
-            // if(i%2===0){
-            //     tabledataL +='<tr class="trclass">'
-            // }
-            // tabledataL += '<td class ="tdclass">'
             let appointCard =  `
             <div class="appoint_card">
+              <h3>Appt-Ref:   AMS-Appt-id${elem.id}</h3><br>
                 <h2>Name : ${elem.contactname}<br> 
+                
                 Date: ${elem.appointmentdate}<br>
                 Location : ${elem.location}<br>
                 Contact : ${elem.contact}<br>
@@ -33,16 +27,12 @@ const listAppointmnets = async() => {
             </div>
             `
             appointmentListDiv.insertAdjacentHTML("beforeend", appointCard)
-            // tabledataL += appointCard
-            // tabledataL += '</td>'
-            // if(i%2===0){
-            //     tabledataL += '</tr>'
-            // }
-            i++;
+      
+           
         })
 
-        tabledataL += `</table>`;
-        appointmentListDiv.innerHTML  += tabledataL
+        
+        
       
 
 
@@ -121,16 +111,15 @@ const  createAppointment = async() => {
         serviceId: document.getElementById("serviceId").value
 
     }
-    console.log()
-//   alert("debug 1" + document.getElementById("serviceId").value);
+   
     try{
             console.log("trying to insert from frontend" + body.serviceId)
             // alert("trying to insert from frontend" + body.serviceId)
             const res =  await axios.post('http://localhost:5050/appointment', body)
-       nameInput.value = body.Name;
-       appointmentDate.value = body.appointmentDate;
-       document.getElementById("servceId").value = body.serviceId
-       alert(`appointment created for ${appointmentDate.value}`)
+    //    nameInput.value = body.Name;
+    //    appointmentDate.value = body.appointmentDate;
+    //    document.getElementById("servceId").value = body.serviceId
+      // alert(`appointment created for ${appointmentDate.value}`)
              getLocataion();
               }
               catch (errors){

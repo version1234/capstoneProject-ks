@@ -1,9 +1,9 @@
-// boiler plate code
+
 require('dotenv').config();
 const Sequelize = require ('sequelize');
 const{CONNECTION_STRING} = process.env
 console.log("server------ index.js");
-console.log(CONNECTION_STRING);
+
 
 const sequelize = new Sequelize('postgres://cqygodlhghevkh:6a6b7f5a0cf926b3410a8f49f28ae92cf300af4515325098908c4a6692bf5af9@ec2-44-197-128-108.compute-1.amazonaws.com:5432/d5iufgbm3g7283',{
     dialect: 'postgres',
@@ -163,7 +163,7 @@ module.exports = {
         
     },
     bookAppointment: (req,res) => {
-        // alert("bookapoitn")
+        
         console.log("in bookappointment")
         var contactName  = req.body.contactName; 
         var appointmentDate  = req.body.appointmentDate;
@@ -171,7 +171,7 @@ module.exports = {
 
 
         console.log("trying to insert",contactName,appointmentDate,serviceid);
-        // alert(serviceid)
+        
         const insert_str = `insert into appointment (contactName, serviceId, appointmentDate) values ('${contactName}',${serviceid},'${appointmentDate}')`;
         sequelize.query(insert_str)
         .then((dbRes) => {
