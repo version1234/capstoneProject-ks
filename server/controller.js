@@ -1,7 +1,7 @@
 
 require('dotenv').config();
 const Sequelize = require ('sequelize');
-const{CONNECTION_STRING} = process.env
+//const{CONNECTION_STRING} = process.env
 console.log("server------ index.js");
 
 

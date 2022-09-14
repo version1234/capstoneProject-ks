@@ -13,37 +13,37 @@ const {seed, getLogins,  bookAppointment, listAppointments, getLogin, getstates,
 
 
  app.post('/seed',seed)
- app.get('/login/:username',getLogin)
- app.get('/states', getstates)
+ //app.get('/api/login/:username',getLogin)
+ app.get('/api/states', getstates)
 
 
 
-app.get('/availableMedicalServicesByState/:id', getavailableMedicalServicesByState)
-app.get('/availableMedicalServices/:id', getavailableMedicalServicesById)
-app.post('/appointment', bookAppointment)
-app.get('/appointments',listAppointments)
+app.get('/api/availableMedicalServicesByState/:id', getavailableMedicalServicesByState)
+app.get('/api/availableMedicalServices/:id', getavailableMedicalServicesById)
+app.post('/api/appointment', bookAppointment)
+app.get('/api/appointments',listAppointments)
 
 
 app.get('/', function(req, res){
     res.sendFile(path.join(__dirname,'../public/avaServices.html'));
 });
 
-app.get('/styles', function(req, res) {
+app.get('/styles.css', function(req, res) {
     res.sendFile(path.join(__dirname,'../public/styles.css'));
 });
 
-app.get('/avasjs', (req, res) => {
+app.get('/avaServices.js', (req, res) => {
     res.sendFile(path.join(__dirname, '../public/avaServices.js'));
 });
 
-app.get('/', function(req, res){
+app.get('/appointment.html', function(req, res){
     res.sendFile(path.join(__dirname,'../public/appointment.html'));
 });
 
-app.get('/apptjs', (req, res) => {
+app.get('/appointment.js', (req, res) => {
     res.sendFile(path.join(__dirname, '../public/appointment.js'));
 });
 
- const port = process.env.PORT || 5050;
+ const port = process.env.PORT || 5050
  app.listen(port, () => {console.log(`listening on port ${port}`);
 })

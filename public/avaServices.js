@@ -16,7 +16,7 @@ const getAvailableServicesByState = async() => {
 
     availableDiv.innerHTML="";
 
-    var res = await axios.get(`http://localhost:5050/availableMedicalServicesByState/${stateSelectedValue}`)
+    const res = await axios.get(`http://localhost:5050/api/availableMedicalServicesByState/${stateSelectedValue}`)
         
             console.log("result data :: ",res.data)
             console.log("result data length  :: ",res.data.length)
@@ -44,8 +44,8 @@ const getAvailableServicesByState = async() => {
 
 const getStates = async()  => {
     try{
-    console.log("grrtuui");
-   const response = await axios.get('http://localhost:5050/states')
+   // console.log("grrtuui");
+   const response = await axios.get('http://localhost:5050/api/states')
 //    console.log(response)
    if(Array.isArray(response.data) && response.data.length > 0) {
     const data = response.data;

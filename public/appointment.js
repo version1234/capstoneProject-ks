@@ -10,7 +10,7 @@ const listAppointmnets = async() => {
        
     try{
 
-        const response = await axios.get(`http://localhost:5050/appointments`)
+        const response = await axios.get(`http://localhost:5050/api/appointments`)
         console.log(response);
        
         response.data.forEach(elem => {
@@ -54,7 +54,7 @@ const getLocataion = async() => {
         return
     }
     //   console.log(`id value ${document.getElementById("serviceId").value}`)
-        const response = await axios.get(`http://localhost:5050/availableMedicalServices/${document.getElementById("serviceId").value}`)
+        const response = await axios.get(`http://localhost:5050/api/availableMedicalServices/${document.getElementById("serviceId").value}`)
         // console.log(response);
       
          locationdiv.innerHTML= response.data[0].location;
@@ -115,7 +115,7 @@ const  createAppointment = async() => {
     try{
             console.log("trying to insert from frontend" + body.serviceId)
             // alert("trying to insert from frontend" + body.serviceId)
-            const res =  await axios.post('http://localhost:5050/appointment', body)
+            const res =  await axios.post('http://localhost:5050/api/appointment', body)
     //    nameInput.value = body.Name;
     //    appointmentDate.value = body.appointmentDate;
     //    document.getElementById("servceId").value = body.serviceId

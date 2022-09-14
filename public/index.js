@@ -21,8 +21,8 @@ const responseSection = document.getElementsByClassName('response-area')[0];
 const getValidateLogin = () => {
 console.log("RRRRRRRRgetValidateLogin");
 console.log(usernameInput.value);
-    axios.get(`http://localhost:5050/login/${usernameInput.value}`)
-    .then(res => {
+   // axios.get(`http://localhost:5050/login/${usernameInput.value}`)
+    //.then(res => {
 
         console.log("result ::" , res.data);
         // res.data.forEach(login => {
